@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Lemonly Family Salon | Best Family Salon in Thanjavur</title>
 <meta name="description" content="Lemonly Family Salon in Thanjavur offers professional hair, beauty, grooming, facial, bridal makeup, nail care and kids salon services for men and women." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -125,19 +125,19 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--charcoal);l
 .navbar.scrolled{background:rgba(246,241,230,.94);backdrop-filter:blur(10px);padding:13px 0;border-bottom-color:var(--line);box-shadow:0 2px 20px rgba(33,29,24,.05);}
 .logo{display:flex;align-items:center;gap:11px;min-width:0;}
 .logo img{height:38px;width:38px;border-radius:50%;object-fit:cover;flex-shrink:0;}
-.logo-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:500;color:#fff;letter-spacing:.01em;line-height:1.2;transition:color .35s var(--ease);}
+.logo-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:500;color:var(--charcoal);letter-spacing:.01em;line-height:1.2;transition:color .35s var(--ease);}
 .navbar.scrolled .logo-name{color:var(--charcoal);}
 .nav-links{display:flex;align-items:center;gap:36px;}
-.nav-links a{font-size:.87rem;font-weight:500;color:rgba(255,255,255,.86);position:relative;padding:4px 0;transition:color .25s var(--ease);}
+.nav-links a{font-size:.87rem;font-weight:500;color:var(--charcoal-70);position:relative;padding:4px 0;transition:color .25s var(--ease);}
 .navbar.scrolled .nav-links a{color:var(--charcoal-70);}
 .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--lemon-deep);transition:width .3s var(--ease);}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.nav-links a:hover{color:#fff;}
+.nav-links a:hover{color:var(--charcoal);}
 .navbar.scrolled .nav-links a:hover{color:var(--charcoal);}
 .nav-right{display:flex;align-items:center;gap:14px;}
 .nav-cta{display:inline-flex;}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:1101;}
-.hamburger span{display:block;width:22px;height:1.5px;background:#fff;transition:background .3s var(--ease), transform .3s var(--ease), opacity .3s var(--ease);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;position:relative;z-index:1101;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--charcoal);transition:background .3s var(--ease), transform .3s var(--ease), opacity .3s var(--ease);}
 .navbar.scrolled .hamburger span{background:var(--charcoal);}
 .hamburger.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
 .hamburger.active span:nth-child(2){opacity:0;}
@@ -155,10 +155,17 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--charcoal);l
 .mobile-drawer .btn{margin-top:20px;}
 .drawer-overlay{position:fixed;inset:0;background:rgba(33,29,24,.4);z-index:1098;opacity:0;visibility:hidden;transition:opacity .35s var(--ease), visibility .35s var(--ease);}
 .drawer-overlay.open{opacity:1;visibility:visible;}
-@media (max-width:900px){
+@media (max-width:1080px){
   .nav-links{display:none;}
   .nav-cta{display:none;}
   .hamburger{display:flex;}
+}
+/* extra breathing room for smaller laptop windows just above the tablet cutoff */
+@media (min-width:1081px) and (max-width:1240px){
+  .nav-links{gap:22px;}
+  .nav-links a{font-size:.83rem;}
+  .logo-name{font-size:.92rem;}
+  .nav-right{gap:10px;}
 }
 
 /* ===== HERO ===== */
@@ -212,7 +219,7 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--charcoal);l
 .hero-badge-float .stars{color:var(--lemon);font-size:.7rem;margin:3px 0;}
 .hero-badge-float .count{font-size:.72rem;color:var(--charcoal-45);}
 
-@media (max-width:1050px){
+@media (max-width:1080px){
   .hero .container{grid-template-columns:1fr;gap:48px;}
   .hero-copy{max-width:none;}
   .hero-copy p{max-width:none;}
@@ -222,6 +229,11 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--charcoal);l
 @media (max-width:600px){
   .hero{padding-top:128px;}
   .hero-facts{gap:20px;}
+}
+@media (max-width:480px){
+  .logo-name{font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44vw;}
+  .container{padding:0 18px;}
+  .hero-cta-row .btn{flex:1 1 100%;}
 }
 
 /* ===== TRUST STRIP ===== */
@@ -495,7 +507,7 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--charcoal);l
 @media (max-width:800px){.footer-top{grid-template-columns:1fr;gap:32px;}}
 
 /* ===== FLOATING BUTTONS ===== */
-.float-stack{position:fixed;right:22px;bottom:22px;z-index:900;display:flex;flex-direction:column-reverse;gap:12px;align-items:center;}
+.float-stack{position:fixed;right:calc(22px + env(safe-area-inset-right));bottom:calc(22px + env(safe-area-inset-bottom));z-index:950;display:flex;flex-direction:column-reverse;gap:12px;align-items:center;}
 .float-btn{
   width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
   background:var(--paper);color:var(--charcoal);box-shadow:var(--shadow-md);border:1px solid var(--line);
@@ -511,7 +523,7 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--charcoal);l
 .float-whatsapp{background:var(--whatsapp);color:#fff;border-color:var(--whatsapp);width:54px;height:54px;font-size:1.3rem;}
 .float-offer{background:var(--lemon);color:#fff;border-color:var(--lemon);font-family:'Fraunces',serif;font-size:.82rem;font-weight:600;}
 @media (max-width:700px){
-  .float-stack{right:14px;bottom:14px;gap:10px;}
+  .float-stack{right:calc(14px + env(safe-area-inset-right));bottom:calc(14px + env(safe-area-inset-bottom));gap:10px;}
   .float-btn{width:42px;height:42px;font-size:.95rem;}
   .float-whatsapp{width:48px;height:48px;font-size:1.15rem;}
   .float-btn .tip{display:none;}
